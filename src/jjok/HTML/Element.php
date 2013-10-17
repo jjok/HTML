@@ -12,9 +12,9 @@ class Element extends SelfClosingElement {
 		parent::__construct($name, $attributes);
 	}
 
-// 	public function append($text) {
-// 		$this->text .= $text;
-// 	}
+	public function append($text) {
+		$this->text .= $text;
+	}
 	
 // 	public function prepend($text) {}
 	
