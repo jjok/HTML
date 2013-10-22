@@ -37,7 +37,10 @@ class SelfClosingElementTest extends PHPUnit_Framework_TestCase {
 	
 	public function testAttributesCanBeAddedToElement() {
 		$element = new SelfClosingElement('a');
-		$this->assertSame('<a />', $element);
-		$element->addAttribute($name, $value)
+		$this->assertSame('<a />', (string) $element);
+		$this->assertSame($element, $element->addAttribute('name', 'value'));
+		$this->assertSame('<a name="value"/>', (string) $element);
+		$this->assertSame($element, $element->addAttribute('another-name', ' another value '));
+		$this->assertSame('<a name="value" another-name=" another value "/>', (string) $element);
 	}
 }
