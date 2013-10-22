@@ -4,35 +4,61 @@ namespace jjok\HTML;
 
 class Element extends SelfClosingElement {
 	
-	protected $text;
+	/**
+	 * 
+	 * @var unknown
+	 */
 	protected $children = array();
 	
+	/**
+	 * 
+	 * @param string $name
+	 * @param SelfClosingElement|string $text
+	 * @param unknown $attributes
+	 */
 	public function __construct($name, $text = '', $attributes = array()) {
-		$this->text = $text;
 		$this->children[] = $text;
 		
 		parent::__construct($name, $attributes);
 	}
 
+	/**
+	 * 
+	 * @param SelfClosingElement|string $child
+	 * @return \jjok\HTML\Element
+	 */
 	public function append($child) {
 		$this->children[] = $child;
 		
 		return $this;
 	}
 	
+	/**
+	 * 
+	 * @param SelfClosingElement|string $child
+	 * @return \jjok\HTML\Element
+	 */
 	public function prepend($child) {
 		array_unshift($this->children, $child);
 		
 		return $this;
 	}
 	
+	/**
+	 * 
+	 * @return \jjok\HTML\Element
+	 */
 	public function clear() {
-		$this->text = '';
+// 		$this->text = '';
 		$this->children = array();
 		
 		return $this;
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see \jjok\HTML\SelfClosingElement::__toString()
+	 */
 	public function __toString() {
 		$attributes = array();
 		foreach($this->attributes as $name => $value) {
@@ -48,7 +74,7 @@ class Element extends SelfClosingElement {
 			'<%s%s>%s</%s>',
 			$this->name,
 			$str_attr,
-			$this->text,
+			implode('', $this->children),
 			$this->name
 		);
 	}
