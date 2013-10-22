@@ -30,7 +30,17 @@ class SelfClosingElement {
 // 		return $this->name;
 // 	}
 	
-	public function addAttribute($name, $value) {}
+	/**
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 * @return \jjok\HTML\SelfClosingElement
+	 */
+	public function addAttribute($name, $value) {
+		$this->attributes[$name] = $value;
+		
+		return $this;
+	}
 	
 	/**
 	 * 
