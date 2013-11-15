@@ -49,7 +49,6 @@ class Element extends SelfClosingElement {
 	 * @return \jjok\HTML\Element
 	 */
 	public function clear() {
-// 		$this->text = '';
 		$this->children = array();
 		
 		return $this;
