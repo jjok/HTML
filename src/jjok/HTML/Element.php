@@ -6,7 +6,7 @@ class Element extends SelfClosingElement {
 	
 	/**
 	 * 
-	 * @var unknown
+	 * @var string[]
 	 */
 	protected $children = array();
 	
@@ -14,9 +14,9 @@ class Element extends SelfClosingElement {
 	 * 
 	 * @param string $name
 	 * @param SelfClosingElement|string $text
-	 * @param unknown $attributes
+	 * @param array $attributes
 	 */
-	public function __construct($name, $text = '', $attributes = array()) {
+	public function __construct($name, $text = '', array $attributes = array()) {
 		$this->children[] = $text;
 		
 		parent::__construct($name, $attributes);
